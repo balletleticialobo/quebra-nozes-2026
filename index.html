@@ -243,6 +243,8 @@ const ICON = {
   marzipa:'<path d="M3.5 18h17l-1.2-10-4.8 4-2.5-6.5-2.5 6.5-4.8-4z"/><path d="M3.5 21h17"/><circle cx="12" cy="4.5" r="1"/>',
   bombom:'<circle cx="12" cy="12" r="4.2"/><path d="M8.3 10L3 6.5v11L8.3 14M15.7 10L21 6.5v11L15.7 14"/>',
   "valsa-das-flores":'<circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6.6" r="3.3"/><circle cx="17.1" cy="10.3" r="3.3"/><circle cx="15.2" cy="16.4" r="3.3"/><circle cx="8.8" cy="16.4" r="3.3"/><circle cx="6.9" cy="10.3" r="3.3"/>',
+  clara:'<path d="M12 10.5 5 6.5v8l7-4zM12 10.5l7-4v8l-7-4z"/><circle cx="12" cy="10.5" r="1.6"/><path d="M11 12l-2.5 8M13 12l2.5 8"/>',
+  "fada-acucarada":'<path d="M4 20 15 9"/><path d="M17 3l1.2 2.8L21 7l-2.8 1.2L17 11l-1.2-2.8L13 7l2.8-1.2z"/><path d="M7 5v2M6 6h2M20 15v2M19 16h2"/>',
   anjo:'<path d="M12 7.5a2.3 2.3 0 1 0 0-.01"/><ellipse cx="12" cy="3" rx="3" ry="1"/><path d="M10 10h4l2.5 10h-9z"/><path d="M10 11C6 9 3 10 2.5 14c3 .5 5-.5 7-2M14 11c4-2 7-1 7.5 3-3 .5-5-.5-7-2"/>',
   soldados:'<path d="M8 10V4.5c0-1 1.8-2 4-2s4 1 4 2V10"/><path d="M6.5 10h11M8 7h8"/><circle cx="12" cy="5" r=".7"/><path d="M9 10v2.5a3 3 0 0 0 6 0V10"/><path d="M7.5 21v-4c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v4M12 14.5V21"/>',
   turma:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15.5 14.4c3 0 5.5 2 5.5 5.1"/>',
@@ -250,7 +252,7 @@ const ICON = {
   alerta:'<path d="M12 3.5L22 20H2z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.2" r=".6"/>',
   chev:'<path d="M9 5l7 7-7 7"/>'
 };
-const ic = (k,cls="") => `<svg class="i ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>`;
+const ic = (k,cls="") => `<svg class="i ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICON[k]||ICON[k.startsWith("clara")?"clara":k.startsWith("fada")?"fada-acucarada":k]||""}</svg>`;
 
 /* Fotos: preencher com o link da imagem quando estiver pronta (deixe "" para mostrar "em breve") */
 const CAUDA_PENTEADO = ", com bastante grampo, liga resistente, redinha fina (redinha de coque invisível) da cor do cabelo e gel sem glitter.";
@@ -263,6 +265,26 @@ const MAQ_COMPLETA = {itens:[["Sombra marrom com dourado"],["Batom rosa escuro"]
 const MAQ_ROSA_OPC = {itens:[["Sombra marrom com dourado"],["Batom rosa escuro"],["Blush"],["Delineador e rímel",true]]};
 
 const CARTAS = [
+ {slug:"clara-bruna", nome:"Clara", bailarina:"Bruna Domiciano",
+  pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
+  acc:[{n:"Laço azul"}],
+  penteado:'O cabelo deve estar preso em um <b>meio rabo, partido ao meio</b>, com liga resistente e gel sem glitter.',
+  maq:{itens:[["Sombra marrom com dourado"],["Batom rosa"],["Blush"],["Delineador",true],["Rímel",true],["Cílios postiços",true]]}, fotos:{figurino:"clara-bruna-figurino.jpg",penteado:null,maquiagem:null}},
+ {slug:"clara-lara", nome:"Clara", bailarina:"Lara Beatriz",
+  pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
+  acc:[{n:"Laço azul"}],
+  penteado:'O cabelo deve estar preso em um <b>meio rabo, partido ao meio</b>, com liga resistente e gel sem glitter.',
+  maq:{itens:[["Sombra marrom com dourado"],["Batom rosa"],["Blush"],["Delineador",true],["Rímel",true],["Cílios postiços",true]]}, fotos:{figurino:"clara-lara-figurino.jpg",penteado:null,maquiagem:null}},
+ {slug:"fada-juliana", nome:"Fada Açucarada", bailarina:"Juliana Batista",
+  pais:["Meia-calça rosa","Sapatilha de pontas","Redinha de coque invisível"],
+  acc:[{n:"Arranjo de cabeça da coreografia"}],
+  coque:"coque alto, partido ao meio (sem rosca)",
+  maq:{itens:[["Sombra marrom com dourado"],["Batom rosa"],["Blush"],["Delineador",true],["Rímel",true],["Cílios postiços",true]]}, fotos:{figurino:"fada-juliana-figurino.jpg",penteado:null,maquiagem:null}},
+ {slug:"fada-livia", nome:"Fada Açucarada", bailarina:"Lívia Maria",
+  pais:["Meia-calça rosa","Sapatilha de pontas","Redinha de coque invisível"],
+  acc:[{n:"Arranjo de cabeça da coreografia"}],
+  coque:"coque alto, partido ao meio (sem rosca)",
+  maq:{itens:[["Sombra marrom com dourado"],["Batom rosa"],["Blush"],["Delineador",true],["Rímel",true],["Cílios postiços",true]]}, fotos:{figurino:"fada-livia-figurino.jpg",penteado:null,maquiagem:null}},
  {slug:"anjo", nome:"Anjo", bailarina:"Anna Luiza Lobato",
   pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia"}],
@@ -283,12 +305,12 @@ const CARTAS = [
  {slug:"chocolate", nome:"Chocolate da Espanha", turma:"3º grau Foundation, 3º grau e solista", prof:"Thay Gamboa e Luma Mell",
   pais:["Meia-calça bege","Sapatilha bege","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior direita da cabeça, preso com bastante grampo."}],
-  coque:"coque partido ao meio, na diagonal da orelha (sem rosca)", maq:MAQ_ROSA_OPC, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  coque:"coque partido ao meio, na diagonal da orelha (sem rosca)", maq:MAQ_ROSA_OPC, fotos:{figurino:"chocolate-figurino.jpg",penteado:"chocolate-penteado.jpg",maquiagem:null}},
  {slug:"cha", nome:"Chá da China", turma:"Primary, 1º grau, 2º grau e solista", prof:"Luma Mell e Thay Gamboa",
   pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado de baixo para cima do coque."},{n:"Par de leques"}],
   coque:"coque médio (sem rosca)",
-  maq:{itens:[["Sombra marrom com dourado"],["Delineado gatinho"],["Batom vermelho"],["Blush"],["Rímel"]]}, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  maq:{itens:[["Sombra marrom com dourado"],["Delineado gatinho"],["Batom vermelho"],["Blush"],["Rímel"]]}, fotos:{figurino:"cha-figurino.jpg",penteado:"cha-penteado.jpg",maquiagem:"cha-maquiagem.jpg"}},
  {slug:"cafe", nome:"Café da Arábia", turma:"3º grau e solista", prof:"Thay Gamboa e Luma Mell",
   pais:["Meia-calça bege","Sapatilha bege","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior da cabeça, com a pedra no meio da testa."}],
@@ -315,7 +337,7 @@ const CARTAS = [
 const plural = s => /( e |,)/.test(s);
 function quem(c){
   const rows=[];
-  if(c.bailarina) rows.push(`<div><span class="ic">${ic("turma")}</span><dt>BAILARINA</dt><dd>${c.bailarina}</dd></div>`);
+  if(c.bailarina) rows.push(`<div><span class="ic">${ic("turma")}</span><dt>${plural(c.bailarina)?'BAILARINAS':'BAILARINA'}</dt><dd>${c.bailarina}</dd></div>`);
   if(c.turma) rows.push(`<div><span class="ic">${ic("turma")}</span><dt>${plural(c.turma)?'TURMAS':'TURMA'}</dt><dd>${c.turma}</dd></div>`);
   if(c.prof) rows.push(`<div><span class="ic">${ic("prof")}</span><dt>${plural(c.prof)?'PROFESSORAS':'PROFESSORA'}</dt><dd>${c.prof}</dd></div>`);
   return rows.length?`<dl class="who">${rows.join("")}</dl>`:"";
@@ -361,7 +383,7 @@ function carta(c){
     <section class="block">
       ${h3("03","PENTEADO")}
       ${foto(c.fotos.penteado,"Referência de penteado",true)}
-      <p class="text">O cabelo deve estar todo preso em um <b>${c.coque}</b>${CAUDA_PENTEADO}</p>
+      <p class="text">${c.penteado || `O cabelo deve estar todo preso em um <b>${c.coque}</b>${CAUDA_PENTEADO}`}</p>
       <p class="note">Qualquer dúvida de como fazer, procure a professora de sua filha.</p>
     </section>
 
