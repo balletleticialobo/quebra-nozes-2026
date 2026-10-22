@@ -139,7 +139,12 @@ svg.i{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.4;stro
   background:radial-gradient(ellipse at 50% 40%, rgba(233,201,138,.10), rgba(0,0,0,.30) 75%);
   color:var(--soft);font-family:var(--script);font-style:italic;font-size:22px;font-weight:600}
 .photo .ph svg{width:120px;height:20px}
-.photo.small .ph,.photo.small img{max-width:340px}
+.photo.small .ph{max-width:340px}
+.photo .pics{display:grid;gap:14px;width:100%;justify-items:center}
+.photo .pics.n2{grid-template-columns:1fr 1fr;max-width:560px}
+.photo .pics.n2 img{max-width:100%}
+.photo.small .pics.n1 img{max-width:420px}
+@media (max-width:420px){.photo .pics.n2{gap:10px}}
 .photo figcaption{font-family:var(--display);color:var(--gold);font-size:14px;letter-spacing:.26em;font-weight:600;margin-top:6px}
 
 section.block{display:grid;gap:16px}
@@ -238,6 +243,8 @@ const ICON = {
   marzipa:'<path d="M3.5 18h17l-1.2-10-4.8 4-2.5-6.5-2.5 6.5-4.8-4z"/><path d="M3.5 21h17"/><circle cx="12" cy="4.5" r="1"/>',
   bombom:'<circle cx="12" cy="12" r="4.2"/><path d="M8.3 10L3 6.5v11L8.3 14M15.7 10L21 6.5v11L15.7 14"/>',
   "valsa-das-flores":'<circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6.6" r="3.3"/><circle cx="17.1" cy="10.3" r="3.3"/><circle cx="15.2" cy="16.4" r="3.3"/><circle cx="8.8" cy="16.4" r="3.3"/><circle cx="6.9" cy="10.3" r="3.3"/>',
+  anjo:'<path d="M12 7.5a2.3 2.3 0 1 0 0-.01"/><ellipse cx="12" cy="3" rx="3" ry="1"/><path d="M10 10h4l2.5 10h-9z"/><path d="M10 11C6 9 3 10 2.5 14c3 .5 5-.5 7-2M14 11c4-2 7-1 7.5 3-3 .5-5-.5-7-2"/>',
+  soldados:'<path d="M8 10V4.5c0-1 1.8-2 4-2s4 1 4 2V10"/><path d="M6.5 10h11M8 7h8"/><circle cx="12" cy="5" r=".7"/><path d="M9 10v2.5a3 3 0 0 0 6 0V10"/><path d="M7.5 21v-4c0-1.5 2-2.5 4.5-2.5s4.5 1 4.5 2.5v4M12 14.5V21"/>',
   turma:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15.5 14.4c3 0 5.5 2 5.5 5.1"/>',
   prof:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v4.8c3.3 2.7 8.7 2.7 12 0V11M22 9v5"/>',
   alerta:'<path d="M12 3.5L22 20H2z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.2" r=".6"/>',
@@ -256,14 +263,23 @@ const MAQ_COMPLETA = {itens:[["Sombra marrom com dourado"],["Batom rosa escuro"]
 const MAQ_ROSA_OPC = {itens:[["Sombra marrom com dourado"],["Batom rosa escuro"],["Blush"],["Delineador e rímel",true]]};
 
 const CARTAS = [
+ {slug:"anjo", nome:"Anjo", bailarina:"Anna Luiza Lobato",
+  pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
+  acc:[{n:"Arranjo de cabeça da coreografia"}],
+  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:null,penteado:"anjo-penteado.jpg",maquiagem:"anjo-maquiagem.jpg"}},
+ {slug:"soldados", nome:"Soldados",
+  pais:["Meia-calça rosa","Sapato a caráter","Redinha de coque invisível"],
+  acc:[{n:"Chapéu de soldado"}],
+  coque:"coque baixo, partido ao meio (sem rosca)",
+  maq:{itens:[["Sombra marrom com dourado"],["Batom vermelho"],["Blush"],["Delineador"],["Rímel"],["Cílios postiços"]]}, fotos:{figurino:"soldados-figurino.jpg",penteado:null,maquiagem:null}},
  {slug:"bonecas", nome:"Bonecas", turma:"Pre Ballet, Pre School 1, Pre School 2 e solistas", prof:"Luma Mell e Thay Gamboa",
   pais:["Meia-calça rosa","Sapatilha rosa (sem glitter)","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior da cabeça, centralizado."}],
-  coque:"coque médio (sem rosca)", maq:MAQ_INFANTIL, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  coque:"coque médio (sem rosca)", maq:MAQ_INFANTIL, fotos:{figurino:"bonecas-figurino.jpg",penteado:"bonecas-penteado.jpg",maquiagem:"bonecas-maquiagem.jpg"}},
  {slug:"flocos-de-neve", nome:"Flocos de Neve", turma:"6º grau e Rainha das Neves", prof:"Luma Mell",
   pais:["Meia-calça rosa","Sapatilha de pontas","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior da cabeça, centralizado."}],
-  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"flocos-figurino.jpg",penteado:"flocos-penteado.jpg",maquiagem:"flocos-maquiagem.jpg"}},
  {slug:"chocolate", nome:"Chocolate da Espanha", turma:"3º grau Foundation, 3º grau e solista", prof:"Thay Gamboa e Luma Mell",
   pais:["Meia-calça bege","Sapatilha bege","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior direita da cabeça, preso com bastante grampo."}],
@@ -276,30 +292,39 @@ const CARTAS = [
  {slug:"cafe", nome:"Café da Arábia", turma:"3º grau e solista", prof:"Thay Gamboa e Luma Mell",
   pais:["Meia-calça bege","Sapatilha bege","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior da cabeça, com a pedra no meio da testa."}],
-  coque:"coque partido ao meio, na diagonal da orelha (sem rosca)", maq:MAQ_ROSA_OPC, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  coque:"coque partido ao meio, na diagonal da orelha (sem rosca)", maq:MAQ_ROSA_OPC, fotos:{figurino:"cafe-figurino.jpg",penteado:"cafe-penteado.jpg",maquiagem:"cafe-maquiagem.jpg"}},
  {slug:"caramelo", nome:"Caramelo Russo", turma:"6º grau, Ballet Executivo e solista", prof:"Luma Mell",
   pais:["Meia-calça rosa","Sapato a caráter","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior da cabeça, centralizado."},{n:"Laço", d:"Posicionado no coque."}],
   coque:"coque baixo, partido ao meio (sem rosca)",
-  maq:{itens:[["Sombra marrom com dourado"],["Batom vermelho"],["Blush"],["Delineador e rímel",true]]}, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  maq:{itens:[["Sombra marrom com dourado"],["Batom vermelho"],["Blush"],["Delineador"],["Rímel"],["Cílios postiços"]]}, fotos:{figurino:"caramelo-figurino.jpg",penteado:"caramelo-penteado.jpg",maquiagem:"caramelo-maquiagem.jpg"}},
  {slug:"marzipa", nome:"Marzipã", turma:"4º grau", prof:"Luma Mell",
   pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado no centro da cabeça (início do coque)."},{n:"Flauta"}],
-  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"marzipa-figurino.jpg",penteado:"marzipa-penteado.jpg",maquiagem:"marzipa-maquiagem.jpg"}},
  {slug:"bombom", nome:"Bombom", turma:"Pre Primary Manhã e Pre Primary Tarde", prof:"Luma Mell e Thay Gamboa",
   pais:["Meia-calça rosa","Sapatilha rosa (sem glitter)","Redinha de coque invisível"],
-  acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior direita da cabeça."}],
-  coque:"coque médio (sem rosca)", maq:MAQ_INFANTIL, fotos:{figurino:"",penteado:"",maquiagem:""}},
+  acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado na parte superior direita da cabeça, com o bombom rosa para frente e o azul para trás."}],
+  coque:"coque médio (sem rosca)", maq:MAQ_INFANTIL, fotos:{figurino:"bombom-figurino.jpg",penteado:["bombom-penteado.jpg","bombom-penteado-2.jpg"],maquiagem:"bombom-maquiagem.jpg"}},
  {slug:"valsa-das-flores", nome:"Valsa das Flores", turma:"6º grau e Intermediate Foundation", prof:"Letícia Lobo",
   pais:["Meia-calça rosa","Sapatilha de ponta","Redinha de coque invisível"],
   acc:[{n:"Arranjo de cabeça da coreografia", d:"Posicionado no centro da cabeça (início do coque)."}],
-  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"",penteado:"",maquiagem:""}}
+  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"valsa-figurino.jpg",penteado:["valsa-penteado.jpg","valsa-penteado-2.jpg"],maquiagem:"valsa-maquiagem.jpg"}}
 ];
 
 const plural = s => /( e |,)/.test(s);
+function quem(c){
+  const rows=[];
+  if(c.bailarina) rows.push(`<div><span class="ic">${ic("turma")}</span><dt>BAILARINA</dt><dd>${c.bailarina}</dd></div>`);
+  if(c.turma) rows.push(`<div><span class="ic">${ic("turma")}</span><dt>${plural(c.turma)?'TURMAS':'TURMA'}</dt><dd>${c.turma}</dd></div>`);
+  if(c.prof) rows.push(`<div><span class="ic">${ic("prof")}</span><dt>${plural(c.prof)?'PROFESSORAS':'PROFESSORA'}</dt><dd>${c.prof}</dd></div>`);
+  return rows.length?`<dl class="who">${rows.join("")}</dl>`:"";
+}
 function foto(src, legenda, small){
-  const body = src
-    ? `<img src="${src}" alt="${legenda}">`
+  if(src===null) return "";
+  const lista = Array.isArray(src) ? src.filter(Boolean) : (src ? [src] : []);
+  const body = lista.length
+    ? `<div class="pics n${lista.length}">${lista.map((u,i)=>`<img src="${u}" alt="${legenda}${lista.length>1?' '+(i+1):''}" loading="lazy">`).join("")}</div>`
     : `<div class="ph"><svg class="orn"><use href="#div"/></svg>Foto em breve<svg class="orn"><use href="#div"/></svg></div>`;
   return `<figure class="photo${small?' small':''}">${body}<figcaption>${legenda.toUpperCase()}</figcaption></figure>`;
 }
@@ -315,10 +340,7 @@ function carta(c){
       <div class="eyebrow">COREOGRAFIA</div>
       <h2><svg class="orn"><use href="#swirl"/></svg><span class="gold">${c.nome}</span><svg class="orn flip"><use href="#swirl"/></svg></h2>
     </div>
-    <dl class="who">
-      <div><span class="ic">${ic("turma")}</span><dt>${plural(c.turma)?'TURMAS':'TURMA'}</dt><dd>${c.turma}</dd></div>
-      <div><span class="ic">${ic("prof")}</span><dt>${plural(c.prof)?'PROFESSORAS':'PROFESSORA'}</dt><dd>${c.prof}</dd></div>
-    </dl>
+    ${quem(c)}
     <p class="letter">Prezados pais e responsáveis, enviamos este informativo com todos os detalhes do espetáculo <b>O Quebra-Nozes</b>, para que todas as alunas estejam impecáveis e preparadas.</p>
     ${foto(c.fotos.figurino,"Figurino oficial")}
 
@@ -361,7 +383,7 @@ function carta(c){
 }
 
 const elIndex=document.getElementById("index"), elCard=document.getElementById("card");
-document.getElementById("list").innerHTML = CARTAS.map(c=>`<li><a href="#${c.slug}"><span class="ic">${ic(c.slug)}</span><span class="mid"><b class="gold">${c.nome}</b><span class="t">${c.turma}</span></span><span class="chev">${ic("chev")}</span></a></li>`).join("");
+document.getElementById("list").innerHTML = CARTAS.map(c=>`<li><a href="#${c.slug}"><span class="ic">${ic(c.slug)}</span><span class="mid"><b class="gold">${c.nome}</b><span class="t">${c.turma||c.bailarina||"Elenco"}</span></span><span class="chev">${ic("chev")}</span></a></li>`).join("");
 
 function route(){
   const slug=(location.hash||"").slice(1);
