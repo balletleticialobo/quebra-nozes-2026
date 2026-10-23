@@ -269,6 +269,10 @@ const CARTAS = [
   pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
   acc:[{n:"Laço", d:"Posicionado no centro da cabeça (início do coque)."}],
   coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"amigas-figurino.jpg",penteado:null,maquiagem:null}},
+ {slug:"amigas-rafaela", nome:"Amigas de Clara", bailarina:"Rafaela Aquino", turma:"4º grau", prof:"Luma Mell",
+  pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
+  acc:[{n:"Laço", d:"Posicionado no centro da cabeça (início do coque)."}],
+  coque:"coque tradicional alto, todo puxado para trás", maq:MAQ_COMPLETA, fotos:{figurino:"amigas-figurino.jpg",penteado:null,maquiagem:"amigas-rafaela-maquiagem.jpg"}},
  {slug:"clara-bruna", nome:"Clara", bailarina:"Bruna Domiciano",
   pais:["Meia-calça rosa","Sapatilha rosa","Redinha de coque invisível"],
   acc:[{n:"Laço azul"}],
@@ -409,7 +413,7 @@ function carta(c){
 }
 
 const elIndex=document.getElementById("index"), elCard=document.getElementById("card");
-document.getElementById("list").innerHTML = CARTAS.map(c=>`<li><a href="#${c.slug}"><span class="ic">${ic(c.slug)}</span><span class="mid"><b class="gold">${c.nome}</b><span class="t">${c.turma||c.bailarina||"Elenco"}</span></span><span class="chev">${ic("chev")}</span></a></li>`).join("");
+document.getElementById("list").innerHTML = CARTAS.map(c=>`<li><a href="#${c.slug}"><span class="ic">${ic(c.slug)}</span><span class="mid"><b class="gold">${c.nome}</b><span class="t">${c.bailarina||c.turma||"Elenco"}</span></span><span class="chev">${ic("chev")}</span></a></li>`).join("");
 
 function route(){
   const slug=(location.hash||"").slice(1);
